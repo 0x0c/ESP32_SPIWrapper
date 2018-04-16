@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstring>
+#include <driver/gpio.h>
 #include <driver/spi_master.h>
 
 namespace m2d
