@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstring>
+#include <driver/gpio.h>
 #include <driver/spi_master.h>
 
 namespace m2d
@@ -86,7 +87,7 @@ namespace ESP32
 			device_config.cs_ena_pretrans = 0;
 			device_config.clock_speed_hz = clock_hz;
 			device_config.spics_io_num = cs;
-			device_config.flags = flags;
+			device_config.flags |= flags;
 			device_config.queue_size = 1;
 			device_config.pre_cb = &SPIWrapper::spi_pre_transfer_callback;
 			device_config.post_cb = &SPIWrapper::spi_post_transfer_callback;
