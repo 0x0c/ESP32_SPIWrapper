@@ -66,7 +66,7 @@ namespace ESP32
 		spi_device_handle_t spi;
 
 	public:
-		SPIWrapper(int clock_hz, int spi_mode, gpio_num_t sclk, gpio_num_t miso, gpio_num_t mosi, gpio_num_t cs, spi_host_device_t host = HSPI_HOST)
+		SPIWrapper(int clock_hz, int spi_mode, gpio_num_t sclk, gpio_num_t miso, gpio_num_t mosi, gpio_num_t cs, spi_host_device_t host = HSPI_HOST, uint8_t flags = 0)
 		{
 			spi_bus_config_t bus_config;
 			bus_config.mosi_io_num = mosi;
@@ -86,7 +86,7 @@ namespace ESP32
 			device_config.cs_ena_pretrans = 0;
 			device_config.clock_speed_hz = clock_hz;
 			device_config.spics_io_num = cs;
-			device_config.flags = 0;
+			device_config.flags = flags;
 			device_config.queue_size = 1;
 			device_config.pre_cb = &SPIWrapper::spi_pre_transfer_callback;
 			device_config.post_cb = &SPIWrapper::spi_post_transfer_callback;
